@@ -2,7 +2,10 @@ import pandas as pd
 
 
 def select_col(df):
-    ball100 = [col for col in df.columns if col.startswith('ball100')]
+    ball100 = []
+    for col in df.columns:
+        if 'Ball100' in col:
+            ball100.append(col)
     df = df[['OUTID', 'Sex', 'Age'] + ball100]
     return df
 
@@ -42,3 +45,6 @@ df_2024 = select_col(df_2024)
 
 EIT = pd.concat([df_2019, df_2020, df_2021], ignore_index=True)
 NMT = pd.concat([df_2022, df_2023, df_2024], ignore_index=True)
+
+print(EIT)
+print(NMT)
