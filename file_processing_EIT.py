@@ -53,5 +53,3 @@ df_2021['Age'] = 2021 - df_2021['Birth']
 df_2021 = select_col(df_2021)
 
 EIT = pd.concat([df_2019, df_2020, df_2021], ignore_index=True)
-
-# print(EIT.columns)

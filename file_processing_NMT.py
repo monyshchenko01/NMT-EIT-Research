@@ -45,5 +45,3 @@ df_2024['Age'] = 2024 - df_2024['Birth']
 df_2024 = select_col(df_2024)
 
 NMT = pd.concat([df_2022, df_2023, df_2024], ignore_index=True)
-
-# print(NMT.columns)
