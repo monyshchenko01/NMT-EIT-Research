@@ -1,7 +1,4 @@
 import pandas as pd
-import math
-
-from prompt_toolkit.utils import to_int
 
 
 def select_col(df):
@@ -34,7 +31,6 @@ def select_col(df):
     return df
 
 
-
 df_2022 = pd.read_csv('data/2022.csv', encoding='', sep=';')
 df_2022['Age'] = 2022 - df_2022['Birth']
 df_2022 = select_col(df_2022)
@@ -49,10 +45,11 @@ df_2024 = select_col(df_2024)
 
 NMT = pd.concat([df_2022, df_2023, df_2024], ignore_index=True)
 
-NMT['average_score'] = NMT[['Ukrainian', 'History', 'Math', 'Physic',
-                              'Chemistry', 'Biology', 'Geography', 'English',
-                              'French', 'German', 'Spanish', 'Ukrainian Literature'
-                            ]].apply(pd.to_numeric, errors='coerce').mean(axis=1, skipna=True)
-# print(NMT.values.tolist())
-print(NMT.columns.tolist())
-print(NMT['average_score'])
+grades_only = ['Block1Ball100', 'Block2Ball100', 'Block3Ball100', # 2022 only
+            'Ukrainian', 'History', 'Math', 'Physic', 'Chemistry', 'Biology',
+            'Geography', 'English', 'French', 'German', 'Spanish', 'Ukrainian Literature']
+
+for col in grades_only:
+    NMT[col] = NMT[col].str.replace(',', '.', regex=False).astype(float)
+
+NMT['Average Score'] = NMT[grades_only].mean(axis=1, skipna=True)
