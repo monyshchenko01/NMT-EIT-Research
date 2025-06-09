@@ -3,8 +3,7 @@ import file_processing_NMT
 
 nmt = file_processing_NMT.NMT
 
-only_scors = nmt.columns.difference(['Sex', 'Age', 'OUTID'])
-nmt[only_scors] = nmt[only_scors].apply(pd.to_numeric, errors='coerce')
+only_scors = nmt.columns.drop(['Sex', 'Age', 'OUTID'])
 
 women = nmt[nmt['Sex'] == 'жінка']
 men = nmt[nmt['Sex'] == 'чоловік']
@@ -12,4 +11,5 @@ men = nmt[nmt['Sex'] == 'чоловік']
 avg_women = women[only_scors].mean()
 avg_men = men[only_scors].mean()
 
-print(avg_women, '/n', avg_men)
+# print(avg_women, '\n', avg_men)
+print(nmt[only_scors].values.tolist())
