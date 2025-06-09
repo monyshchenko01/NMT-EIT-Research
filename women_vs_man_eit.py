@@ -12,6 +12,9 @@ avg_men = men['Average Score'].mean()
 
 print(f"Average woman score on EIT:\t{avg_women.round()}\nAverage man score on EIT:\t{avg_men.round()}\n\n")
 
+women = women[women[file_processing_EIT.grades_only] != 0]
+men = men[men[file_processing_EIT.grades_only] != 0]
+
 avg_women_by_subject = women[file_processing_EIT.grades_only].mean()
 avg_men_by_subject = men[file_processing_EIT.grades_only].mean()
 
