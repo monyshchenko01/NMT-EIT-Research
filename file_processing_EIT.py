@@ -53,3 +53,15 @@ df_2021['Age'] = 2021 - df_2021['Birth']
 df_2021 = select_col(df_2021)
 
 EIT = pd.concat([df_2019, df_2020, df_2021], ignore_index=True)
+
+grades_only = ['Ukrainian', 'History', 'Math', 'Physic',
+               'Chemistry', 'Biology', 'Geography', 'English', 'French', 'German',
+               'Spanish', 'Ukrainian Literature', 'Applied History', 'Applied Math',
+               'Applied Physic', 'Applied Chemistry', 'Applied Biology',
+               'Applied Geography', 'Applied English', 'Applied French',
+               'Applied German', 'Applied Spanish']
+
+for col in grades_only:
+    EIT[col] = EIT[col].str.replace(',', '.', regex=False).astype(float)
+
+EIT['Average Score'] = EIT[grades_only].mean(axis=1, skipna=True)
