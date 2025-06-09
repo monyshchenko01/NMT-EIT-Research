@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 def select_col(df):
@@ -52,4 +53,5 @@ grades_only = ['Block1Ball100', 'Block2Ball100', 'Block3Ball100', # 2022 only
 for col in grades_only:
     NMT[col] = NMT[col].str.replace(',', '.', regex=False).astype(float)
 
+NMT[grades_only] = NMT[grades_only].replace(0, np.nan)
 NMT['Average Score'] = NMT[grades_only].mean(axis=1, skipna=True)

@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 def select_col(df):
@@ -64,4 +65,5 @@ grades_only = ['Ukrainian', 'History', 'Math', 'Physic',
 for col in grades_only:
     EIT[col] = EIT[col].str.replace(',', '.', regex=False).astype(float)
 
+EIT[grades_only] = EIT[grades_only].replace(0, np.nan)
 EIT['Average Score'] = EIT[grades_only].mean(axis=1, skipna=True)
