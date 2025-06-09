@@ -4,6 +4,8 @@ eit = file_processing_EIT.EIT
 
 women = eit[eit['Sex'] == 'жіноча']
 men = eit[eit['Sex'] == 'чоловіча']
+women = women[women['Average Score'] != 0]
+men = men[men['Average Score'] != 0]
 
 avg_women = women['Average Score'].mean()
 avg_men = men['Average Score'].mean()
