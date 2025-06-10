@@ -14,7 +14,7 @@ def select_col(df):
         if col == 'SexTypeName':
             df = df.rename(columns={'SexTypeName': 'Sex'})
 
-    df = df[['OUTID', 'Sex', 'Age'] + ball100]
+    df = df[['OUTID', 'Sex', 'Age', 'EORegName'] + ball100]
 
     df = df.rename(columns={'UkrBlockBall100': 'Ukrainian'})
     df = df.rename(columns={'HistBlockBall100': 'History'})

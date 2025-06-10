@@ -12,7 +12,7 @@ def select_col(df):
         if col == 'SexTypeName':
             df = df.rename(columns={'SexTypeName': 'Sex'})
 
-    df = df[['OUTID', 'Sex', 'Age'] + ball100]
+    df = df[['OUTID', 'Sex', 'Age', 'EORegName'] + ball100]
 
     df = df.rename(columns={'UkrBall100': 'Ukrainian'})
     df = df.rename(columns={'histBall100': 'History'})
