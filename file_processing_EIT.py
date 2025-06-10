@@ -66,4 +66,4 @@ for col in grades_only:
     EIT[col] = EIT[col].str.replace(',', '.', regex=False).astype(float)
 
 EIT[grades_only] = EIT[grades_only].replace(0, np.nan)
-EIT['Average Score'] = EIT[grades_only].mean(axis=1, skipna=True)
+EIT['Average Score'] = EIT[grades_only].median(axis=1, skipna=True)
